@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Categorias, Categoria } from '../utils/types'
 interface providerProps {
     children?: JSX.Element
-    Categorias: Categorias[]
+    categorias?: Categorias[]
 }
 
 const QuioscoContext = createContext<Categoria[]>([])
@@ -22,9 +22,9 @@ const QuioscoProvider = ({ children }: providerProps) => {
 
     return (
         <QuioscoContext.Provider
-            value={{ 
+            value={ 
                 categorias
-            }}
+            }
         >
             {children}
 
