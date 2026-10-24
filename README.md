@@ -71,11 +71,17 @@ npm install
 
 ### Variables de entorno
 
-Prisma lee la conexión desde `DATABASE_URL` (`prisma/schema.prisma`). Define la variable en un archivo `.env` en la raíz:
+Prisma lee la conexión desde `DATABASE_URL` (`datasource db { url = env("DATABASE_URL") }` en `prisma/schema.prisma`). Copia la plantilla `.env.example` a `.env` en la raíz y completa tus datos de PostgreSQL:
+
+```bash
+cp .env.example .env
+```
 
 ```env
-DATABASE_URL="postgresql://USUARIO:PASSWORD@localhost:5432/quiosco"
+DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/quiosco"
 ```
+
+El archivo `.env` está en `.gitignore`: nunca lo subas al repositorio.
 
 | Variable       | Uso                                       |
 | -------------- | ----------------------------------------- |
@@ -222,6 +228,7 @@ QuioscoApp/
 │   └── globals.css                # Directivas de Tailwind
 ├── utils/
 │   └── types.ts                   # Interfaces TypeScript
+├── .env.example                   # Plantilla de DATABASE_URL
 ├── next.config.js
 ├── tailwind.config.js
 ├── postcss.config.js
@@ -235,7 +242,7 @@ QuioscoApp/
 
 | Dónde                          | Qué                                     | Valor actual                         |
 | ------------------------------ | --------------------------------------- | ------------------------------------ |
-| `.env` → `DATABASE_URL`        | Conexión a la base de datos             | Cadena de PostgreSQL                 |
+| `.env` → `DATABASE_URL`        | Conexión a la base de datos             | Cadena de PostgreSQL (ver `.env.example`) |
 | `prisma/schema.prisma`         | Proveedor de base de datos              | `postgresql`                         |
 | `prisma/data/*.ts`             | Datos que carga el seed                 | 6 categorías, 59 productos           |
 | `next.config.js`               | Opciones de Next.js                     | `reactStrictMode: true`, `swcMinify: true` |
