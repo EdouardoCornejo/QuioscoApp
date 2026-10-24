@@ -10,7 +10,7 @@ export default function Layout({ children, pagina }: Props) {
   return (
     <>
       <Head>
-        <title>Cafe - {pagina} </title>
+        <title>{`Quiosco Café | ${pagina}`}</title>
         <meta name="description" content="Quiosco Cafetería" />
       </Head>
 

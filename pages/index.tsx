@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <Layout pagina={''}>
+      <Layout pagina={'Inicio'}>
         <h1>Inicio</h1>
       </Layout>
     </>

@@ -164,10 +164,11 @@ El campo `icono` corresponde a `public/assets/img/icono_<icono>.svg` y el campo 
 - `QuioscoProvider` guarda `categorias` en estado; `obtenerCategorias` hace `axios('/api/categorias')` dentro de un `useEffect` de montaje.
 - `useQuiosco` es un atajo a `useContext(QuioscoContext)`.
 - `pages/_app.tsx` envuelve toda la app con el provider e importa `styles/globals.css` (Tailwind).
+- `pages/_document.tsx` fija `lang="es"`, el favicon, el `apple-touch-icon` y el `theme-color`.
 
 ### 4. `layout/Layout.tsx` y `components/Sidebar.tsx`
 
-- `Layout` define el `<title>` ("Cafe - {pagina}"), la meta descripción y un diseño de dos columnas (`aside` + `main`) con breakpoints `md`, `xl` y `2xl`.
+- `Layout` define el `<title>` ("Quiosco Café | {pagina}"), la meta descripción y un diseño de dos columnas (`aside` + `main`) con breakpoints `md`, `xl` y `2xl`.
 - `Sidebar` muestra el logotipo con `next/image` y lee las categorías con `useQuiosco` (el renderizado de la lista está pendiente).
 
 ### Flujo de datos
@@ -212,6 +213,7 @@ QuioscoApp/
 │   └── Layout.tsx                 # <Head> + aside/main
 ├── pages/
 │   ├── _app.tsx                   # Provider global + estilos
+│   ├── _document.tsx              # lang, favicon y theme-color
 │   ├── index.tsx                  # Página de inicio
 │   └── api/
 │       └── categorias.ts          # GET /api/categorias
@@ -223,7 +225,10 @@ QuioscoApp/
 │   │   └── productos.ts           # 59 productos
 │   └── migrations/                # Migraciones de PostgreSQL
 ├── public/
-│   └── assets/img/                # Fotos de productos, iconos y logo
+│   ├── assets/img/                # Fotos de productos, iconos y logo
+│   ├── favicon.svg                # Favicon (+ favicon.ico de respaldo)
+│   ├── favicon.ico
+│   └── apple-touch-icon.png       # Icono de inicio en iOS
 ├── styles/
 │   └── globals.css                # Directivas de Tailwind
 ├── utils/
